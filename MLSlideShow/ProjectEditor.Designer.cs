@@ -46,6 +46,7 @@
             this.fbdMain = new System.Windows.Forms.FolderBrowserDialog();
             this.ofdMain = new System.Windows.Forms.OpenFileDialog();
             this.picturePreview = new System.Windows.Forms.PictureBox();
+            this.playToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -84,6 +85,8 @@
             // 
             // slideShowToolStripMenuItem
             // 
+            this.slideShowToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.playToolStripMenuItem});
             this.slideShowToolStripMenuItem.Name = "slideShowToolStripMenuItem";
             this.slideShowToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
             this.slideShowToolStripMenuItem.Text = "SlideShow";
@@ -213,9 +216,15 @@
             this.picturePreview.Location = new System.Drawing.Point(0, 0);
             this.picturePreview.Name = "picturePreview";
             this.picturePreview.Size = new System.Drawing.Size(645, 718);
-            this.picturePreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picturePreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picturePreview.TabIndex = 0;
             this.picturePreview.TabStop = false;
+            // 
+            // playToolStripMenuItem
+            // 
+            this.playToolStripMenuItem.Name = "playToolStripMenuItem";
+            this.playToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.playToolStripMenuItem.Text = "Play";
             // 
             // ProjectEditor
             // 
@@ -264,6 +273,7 @@
         private System.Windows.Forms.FolderBrowserDialog fbdMain;
         private System.Windows.Forms.OpenFileDialog ofdMain;
         private System.Windows.Forms.PictureBox picturePreview;
+        private System.Windows.Forms.ToolStripMenuItem playToolStripMenuItem;
     }
 }
 

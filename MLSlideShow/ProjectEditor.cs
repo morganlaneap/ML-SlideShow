@@ -34,6 +34,8 @@ namespace MLSlideShow
             project.Images = new List<Models.Image>();
             project.DateCreated = DateTime.Now;
             currentProject = project;
+            lstImages.Items.Clear();
+            picturePreview.Image = null;
         }
 
         private void LoadImages(List<FileInfo> files)
@@ -79,6 +81,7 @@ namespace MLSlideShow
             lstImages.View = View.LargeIcon;
         }
 
+        #region Click Events
         private void newProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CreateNewProject();
@@ -133,5 +136,6 @@ namespace MLSlideShow
                 picturePreview.Image = System.Drawing.Image.FromFile(lstImages.SelectedItems[0].ToolTipText);
             }
         }
+        #endregion
     }
 }
