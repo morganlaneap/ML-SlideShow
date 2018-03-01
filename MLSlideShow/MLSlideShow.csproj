@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SlideShow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SlideShow.Designer.cs">
+      <DependentUpon>SlideShow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Variables.cs" />
     <Compile Include="Helpers\IOHelper.cs" />
     <Compile Include="Models\Image.cs" />
@@ -69,6 +75,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SlideShow.resx">
+      <DependentUpon>SlideShow.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -137,5 +137,19 @@ namespace MLSlideShow
             }
         }
         #endregion
+
+        private void playToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (currentProject.Images.Count == 0)
+            {
+                MessageBox.Show("You must add some images before starting a slideshow.", "Error");
+            }
+            else
+            {
+                SlideShow ss = new SlideShow(currentProject.Images, this);
+                this.Hide();
+                ss.Show();
+            }
+        }
     }
 }
