@@ -26,6 +26,11 @@ namespace MLSlideShow
             CreateNewProject();
         }
 
+        private void SetTitle(string title)
+        {
+            this.Text = "MLSlideShow - " + title;
+        }
+
         private void CreateNewProject()
         {
             Project project = new Project();
@@ -98,6 +103,7 @@ namespace MLSlideShow
             {
                 ioHelper.SaveProject(currentProject, sfdMain.FileName);
                 currentProjectFilePath = sfdMain.FileName;
+                SetTitle(currentProjectFilePath);
             }
         }
 
@@ -116,6 +122,7 @@ namespace MLSlideShow
             if (currentProjectFilePath != null && currentProjectFilePath != "")
             {
                 ioHelper.SaveProject(currentProject, currentProjectFilePath);
+                SetTitle(currentProjectFilePath);
             }
         }
 
@@ -126,6 +133,8 @@ namespace MLSlideShow
                 Project project = ioHelper.LoadProject(ofdMain.FileName);
                 currentProject = project;
                 BindList();
+                currentProjectFilePath = ofdMain.FileName;
+                SetTitle(currentProjectFilePath);
             }
         }
 
