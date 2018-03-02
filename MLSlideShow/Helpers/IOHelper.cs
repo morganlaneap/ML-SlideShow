@@ -16,7 +16,7 @@ namespace MLSlideShow.Helpers
             XmlSerializer xml = new XmlSerializer(typeof(Project));
             TextWriter textWriter = new StreamWriter(fileName);
             xml.Serialize(textWriter, project);
-            textWriter.Close();            
+            textWriter.Close();              
             return true;
         }
 
@@ -53,7 +53,9 @@ namespace MLSlideShow.Helpers
         {
             XmlSerializer xml = new XmlSerializer(typeof(Project));
             StreamReader reader = new StreamReader(path);
-            return (Project)xml.Deserialize(reader.BaseStream);
+            var p = (Project)xml.Deserialize(reader.BaseStream);
+            reader.Close();
+            return p;
         }
     }
 }

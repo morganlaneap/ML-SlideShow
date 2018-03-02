@@ -21,6 +21,8 @@ namespace MLSlideShow
         public string currentProjectFilePath { get; set; }
         private IOHelper ioHelper = new IOHelper();
         private ImageHelper imageHelper = new ImageHelper();
+        private bool isSavePending = false;
+        private string oldTitle = "";
 
         public ProjectEditor()
         {
@@ -29,11 +31,20 @@ namespace MLSlideShow
             UpdateStatus("Ready");
         }
 
-        private void Exit()
+        private void Exit(FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to exit?", "Exit", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (isSavePending)
             {
-                Environment.Exit(0);
+                if (MessageBox.Show("You have unsaved changes. Are you sure you want to exit?", "Exit", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    Application.Exit();
+                } else
+                {
+                    e.Cancel = true;   
+                }
+            } else
+            {
+                Application.Exit();
             }
         }
 
@@ -52,9 +63,22 @@ namespace MLSlideShow
         #endregion
 
         #region Logic Methods
-        private void SetTitle(string title)
+        private void SetTitle(string title, bool prefix = true)
+        {          
+            this.Text = (prefix ? "MLSlideShow - " : "") + title;
+        }
+
+        private void MarkSavePending()
         {
-            this.Text = "MLSlideShow - " + title;
+            oldTitle = this.Text;
+            isSavePending = true;
+            SetTitle("*" + oldTitle, false);
+        }
+
+        private void ClearSavePending()
+        {
+            isSavePending = false;
+            SetTitle(oldTitle, false);
         }
 
         private void CreateNewProject(bool prompt)
@@ -76,12 +100,21 @@ namespace MLSlideShow
             lstImages.Items.Clear();
             picturePreview.Image = null;
             this.Text = "MLSlideShow - Unsaved Project";
+            isSavePending = false;
             currentProjectFilePath = "";
             lstImages.LargeImageList = null;
         }
 
         private void OpenProject()
         {
+            if (isSavePending)
+            {
+                if (MessageBox.Show("You have unsaved changes. Are you sure you want to open a new project?", "Open Project", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                {
+                    return;
+                }
+            }
+
             if (ofdMain.ShowDialog() == DialogResult.OK)
             {
                 Project project = ioHelper.LoadProject(ofdMain.FileName);
@@ -98,6 +131,7 @@ namespace MLSlideShow
             {
                 ioHelper.SaveProject(currentProject, currentProjectFilePath);
                 SetTitle(currentProjectFilePath);
+                ClearSavePending();
             }
         }
 
@@ -108,6 +142,7 @@ namespace MLSlideShow
                 ioHelper.SaveProject(currentProject, sfdMain.FileName);
                 currentProjectFilePath = sfdMain.FileName;
                 SetTitle(currentProjectFilePath);
+                ClearSavePending();
             }
         }
 
@@ -204,7 +239,7 @@ namespace MLSlideShow
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Exit();
+            Exit(new FormClosingEventArgs(CloseReason.ApplicationExitCall, false));
         }
 
         private void playToolStripMenuItem_Click(object sender, EventArgs e)
@@ -249,7 +284,7 @@ namespace MLSlideShow
 
         private void tsbExit_Click(object sender, EventArgs e)
         {
-            Exit();
+            Exit(new FormClosingEventArgs(CloseReason.ApplicationExitCall, false));
         }
         #endregion
 
@@ -296,6 +331,8 @@ namespace MLSlideShow
                 lstImages.View = View.LargeIcon;
 
                 lstImages.SelectedIndexChanged += lstImages_SelectedIndexChanged;
+
+                MarkSavePending();
 
                 UpdateStatus("Ready");
             }
@@ -345,6 +382,11 @@ namespace MLSlideShow
                 var image = lstImages.SelectedItems[0];
                 RemoveImageFromProject(image.ToolTipText);
             }
+        }
+
+        private void ProjectEditor_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Exit(e);
         }
     }
 }

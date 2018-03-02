@@ -377,7 +377,7 @@
             this.removeImageToolStripMenuItem,
             this.startSlideShowHereToolStripMenuItem});
             this.imageContextMenu.Name = "imageContextMenu";
-            this.imageContextMenu.Size = new System.Drawing.Size(193, 70);
+            this.imageContextMenu.Size = new System.Drawing.Size(193, 48);
             // 
             // removeImageToolStripMenuItem
             // 
@@ -405,6 +405,7 @@
             this.Name = "ProjectEditor";
             this.Text = "MLSlideShow";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProjectEditor_FormClosing);
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
             this.toolStripContainer1.BottomToolStripPanel.ResumeLayout(false);
