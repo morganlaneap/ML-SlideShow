@@ -15,13 +15,15 @@ namespace MLSlideShow
         private List<Models.Image> imageList = new List<Models.Image>();
         private int currentIndex = 0;
         private ProjectEditor _oldForm { get; set; }
+        Thread slideShowThread;
 
-        public SlideShow(List<Models.Image> images, ProjectEditor oldForm)
+        public SlideShow(List<Models.Image> images, ProjectEditor oldForm, int startFrom = 0)
         {
             InitializeComponent();
+            currentIndex = startFrom;
             _oldForm = oldForm;
             imageList = images;
-            Thread slideShowThread = new Thread(RunSlideShow);
+            slideShowThread = new Thread(RunSlideShow);
             slideShowThread.IsBackground = true;
             slideShowThread.SetApartmentState(ApartmentState.STA);
             slideShowThread.Start();
@@ -61,9 +63,15 @@ namespace MLSlideShow
         {
             if (MessageBox.Show("Are you sure you want to exit the SlideShow?", "Exit", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
+                slideShowThread.Abort();
                 _oldForm.Show();
                 this.Close();
             }            
+        }
+
+        private void pictureCurrent_Click(object sender, EventArgs e)
+        {
+            ChangeImage(imageList[currentIndex + 1].FilePath);
         }
     }
 }

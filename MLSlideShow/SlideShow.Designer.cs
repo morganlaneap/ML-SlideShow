@@ -47,19 +47,20 @@
             this.pictureCurrent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureCurrent.TabIndex = 0;
             this.pictureCurrent.TabStop = false;
+            this.pictureCurrent.Click += new System.EventHandler(this.pictureCurrent_Click);
             // 
             // mainContextMenu
             // 
             this.mainContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exitToolStripMenuItem});
             this.mainContextMenu.Name = "mainContextMenu";
-            this.mainContextMenu.Size = new System.Drawing.Size(153, 48);
+            this.mainContextMenu.Size = new System.Drawing.Size(93, 26);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Image = global::MLSlideShow.Properties.Resources.application_exit_4;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 

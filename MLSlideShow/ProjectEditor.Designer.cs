@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectEditor));
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,6 +62,9 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbExit = new System.Windows.Forms.ToolStripButton();
             this.ofdAddImage = new System.Windows.Forms.OpenFileDialog();
+            this.imageContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.removeImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startSlideShowHereToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -73,6 +77,7 @@
             this.mainToolstrip.SuspendLayout();
             this.mainStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picturePreview)).BeginInit();
+            this.imageContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMenu
@@ -171,6 +176,7 @@
             // 
             // lstImages
             // 
+            this.lstImages.ContextMenuStrip = this.imageContextMenu;
             this.lstImages.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lstImages.Location = new System.Drawing.Point(0, 0);
             this.lstImages.MultiSelect = false;
@@ -365,6 +371,28 @@
             // 
             this.ofdAddImage.Filter = "Image files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
             // 
+            // imageContextMenu
+            // 
+            this.imageContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.removeImageToolStripMenuItem,
+            this.startSlideShowHereToolStripMenuItem});
+            this.imageContextMenu.Name = "imageContextMenu";
+            this.imageContextMenu.Size = new System.Drawing.Size(193, 70);
+            // 
+            // removeImageToolStripMenuItem
+            // 
+            this.removeImageToolStripMenuItem.Name = "removeImageToolStripMenuItem";
+            this.removeImageToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.removeImageToolStripMenuItem.Text = "Remove Image";
+            this.removeImageToolStripMenuItem.Click += new System.EventHandler(this.removeImageToolStripMenuItem_Click);
+            // 
+            // startSlideShowHereToolStripMenuItem
+            // 
+            this.startSlideShowHereToolStripMenuItem.Name = "startSlideShowHereToolStripMenuItem";
+            this.startSlideShowHereToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.startSlideShowHereToolStripMenuItem.Text = "Start SlideShow Here...";
+            this.startSlideShowHereToolStripMenuItem.Click += new System.EventHandler(this.startSlideShowHereToolStripMenuItem_Click);
+            // 
             // ProjectEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -395,6 +423,7 @@
             this.mainStatus.ResumeLayout(false);
             this.mainStatus.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picturePreview)).EndInit();
+            this.imageContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -434,6 +463,9 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton tsbExit;
         private System.Windows.Forms.OpenFileDialog ofdAddImage;
+        private System.Windows.Forms.ContextMenuStrip imageContextMenu;
+        private System.Windows.Forms.ToolStripMenuItem removeImageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem startSlideShowHereToolStripMenuItem;
     }
 }
 

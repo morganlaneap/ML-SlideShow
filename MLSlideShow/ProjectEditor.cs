@@ -165,7 +165,20 @@ namespace MLSlideShow
             UpdateStatus("Finalising...");
 
             BindList();
-        }       
+        } 
+        
+        private void RemoveImageFromProject(string filePath)
+        {
+            currentProject.Images.Remove(currentProject.Images.Where(x => x.FilePath == filePath).First());
+
+            Thread t = new Thread(() =>
+            {
+                BindList();
+            });
+            t.IsBackground = true;
+            t.SetApartmentState(ApartmentState.STA);
+            t.Start();
+        }
         #endregion
 
         #region Click Events
@@ -271,7 +284,7 @@ namespace MLSlideShow
                     {
                         Text = i.FileName,
                         ToolTipText = i.FilePath,
-                        ImageIndex = imageIndex                   
+                        ImageIndex = imageIndex                       
                     });
 
                     imageIndex++;
@@ -311,8 +324,27 @@ namespace MLSlideShow
                 ss.Show();
             }
         }
+
         #endregion
 
-        
+        private void startSlideShowHereToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lstImages.SelectedIndices.Count > 0)
+            {
+                int index = lstImages.SelectedIndices[0];
+                SlideShow ss = new SlideShow(currentProject.Images, this, index);
+                this.Hide();
+                ss.Show();
+            }
+        }
+
+        private void removeImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lstImages.SelectedItems.Count > 0)
+            {
+                var image = lstImages.SelectedItems[0];
+                RemoveImageFromProject(image.ToolTipText);
+            }
+        }
     }
 }
