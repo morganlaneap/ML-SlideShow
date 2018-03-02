@@ -61,12 +61,12 @@ namespace MLSlideShow
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to exit the SlideShow?", "Exit", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
+            //if (MessageBox.Show("Are you sure you want to exit the SlideShow?", "Exit", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            //{
                 slideShowThread.Abort();
                 _oldForm.Show();
                 this.Close();
-            }            
+            //}            
         }
 
         private void pictureCurrent_Click(object sender, EventArgs e)
