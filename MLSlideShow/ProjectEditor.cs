@@ -19,6 +19,7 @@ namespace MLSlideShow
         public Project currentProject { get; set; }
         public string currentProjectFilePath { get; set; }
         private IOHelper ioHelper = new IOHelper();
+        private ImageHelper imageHelper = new ImageHelper();
 
         public ProjectEditor()
         {
@@ -59,6 +60,7 @@ namespace MLSlideShow
             picturePreview.Image = null;
             this.Text = "MLSlideShow - Unsaved Project";
             currentProjectFilePath = "";
+            lstImages.LargeImageList = null;
         }
 
         private void OpenProject()
@@ -226,7 +228,9 @@ namespace MLSlideShow
                 {
                     UpdateStatus(String.Format("Loading image {0} of {1}", imageIndex + 1, currentProject.Images.Count));
 
-                    imageList.Images.Add(System.Drawing.Image.FromFile(i.FilePath));
+                    Bitmap bmp = imageHelper.ResizeBitmap((Bitmap)System.Drawing.Image.FromFile(i.FilePath), 128, 128);
+
+                    imageList.Images.Add(bmp);
 
                     lstImages.Items.Add(new ListViewItem()
                     {
