@@ -128,6 +128,7 @@ namespace MLSlideShow
                 BindList();
                 currentProjectFilePath = ofdMain.FileName;
                 SetTitle(currentProjectFilePath);
+                ClearSavePending();
             }
         }
 
@@ -385,8 +386,11 @@ namespace MLSlideShow
         {
             if (lstImages.SelectedItems.Count > 0)
             {
-                var image = lstImages.SelectedItems[0];
-                RemoveImageFromProject(image.ToolTipText);
+                if (MessageBox.Show("Are you sure you want to remove this image?", "Remove Image", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    var image = lstImages.SelectedItems[0];
+                    RemoveImageFromProject(image.ToolTipText);
+                }
             }
         }
 

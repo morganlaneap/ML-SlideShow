@@ -374,8 +374,8 @@
             // imageContextMenu
             // 
             this.imageContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.removeImageToolStripMenuItem,
-            this.startSlideShowHereToolStripMenuItem});
+            this.startSlideShowHereToolStripMenuItem,
+            this.removeImageToolStripMenuItem});
             this.imageContextMenu.Name = "imageContextMenu";
             this.imageContextMenu.Size = new System.Drawing.Size(193, 48);
             // 
