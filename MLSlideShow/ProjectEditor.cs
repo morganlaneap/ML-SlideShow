@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MLSlideShow.Models;
 using MLSlideShow.Helpers;
 using System.IO;
+using System.Drawing.Imaging;
 
 namespace MLSlideShow
 {
@@ -270,7 +271,7 @@ namespace MLSlideShow
                     {
                         Text = i.FileName,
                         ToolTipText = i.FilePath,
-                        ImageIndex = imageIndex
+                        ImageIndex = imageIndex                   
                     });
 
                     imageIndex++;
