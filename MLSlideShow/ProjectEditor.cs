@@ -78,6 +78,12 @@ namespace MLSlideShow
         private void ClearSavePending()
         {
             isSavePending = false;
+
+            if (oldTitle == "")
+            {
+                oldTitle = currentProjectFilePath;
+            }
+
             SetTitle(oldTitle, false);
         }
 
