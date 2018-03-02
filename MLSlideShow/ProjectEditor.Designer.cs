@@ -162,7 +162,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.picturePreview);
             this.splitContainer1.Size = new System.Drawing.Size(1448, 673);
-            this.splitContainer1.SplitterDistance = 791;
+            this.splitContainer1.SplitterDistance = 978;
             this.splitContainer1.SplitterWidth = 20;
             this.splitContainer1.TabIndex = 2;
             // 
@@ -172,7 +172,7 @@
             this.lstImages.Location = new System.Drawing.Point(0, 0);
             this.lstImages.MultiSelect = false;
             this.lstImages.Name = "lstImages";
-            this.lstImages.Size = new System.Drawing.Size(789, 671);
+            this.lstImages.Size = new System.Drawing.Size(976, 671);
             this.lstImages.TabIndex = 1;
             this.lstImages.UseCompatibleStateImageBehavior = false;
             // 
@@ -226,7 +226,7 @@
             this.picturePreview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picturePreview.Location = new System.Drawing.Point(0, 0);
             this.picturePreview.Name = "picturePreview";
-            this.picturePreview.Size = new System.Drawing.Size(635, 671);
+            this.picturePreview.Size = new System.Drawing.Size(448, 671);
             this.picturePreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picturePreview.TabIndex = 0;
             this.picturePreview.TabStop = false;

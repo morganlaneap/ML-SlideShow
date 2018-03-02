@@ -57,7 +57,7 @@ namespace MLSlideShow
             currentProject = project;
             lstImages.Items.Clear();
             picturePreview.Image = null;
-            this.Text = "MLSlideShow";
+            this.Text = "MLSlideShow - Unsaved Project";
             currentProjectFilePath = "";
         }
 
@@ -96,9 +96,17 @@ namespace MLSlideShow
         {
             if (fbdMain.ShowDialog() == DialogResult.OK)
             {
-                List<FileInfo> files = ioHelper.GetImagesFromDirectory(fbdMain.SelectedPath);
+                Thread t = new Thread(() =>
+                {
+                    UpdateStatus("Indexing files...");
 
-                LoadImages(files);
+                    List<FileInfo> files = ioHelper.GetImagesFromDirectory(fbdMain.SelectedPath);
+
+                    LoadImages(files);
+                });
+                t.IsBackground = true;
+                t.SetApartmentState(ApartmentState.STA);
+                t.Start();
             }
         }
 
@@ -109,14 +117,20 @@ namespace MLSlideShow
 
         private void LoadImages(List<FileInfo> files)
         {
+            int index = 1;
+
             foreach (FileInfo fi in files)
             {
+                UpdateStatus(String.Format("Locating image {0} of {1}", index, files.Count));
+
                 Models.Image i = new Models.Image();
                 i.DateAdded = DateTime.Now;
                 i.FileName = fi.Name;
                 i.FilePath = fi.FullName;
                 currentProject.Images.Add(i);
             }
+
+            UpdateStatus("Finalising...");
 
             BindList();
         }       
@@ -190,33 +204,49 @@ namespace MLSlideShow
         #endregion
 
         #region ListView events
+        private delegate void delBindList();
         private void BindList()
         {
-            lstImages.Items.Clear();
-
-            //List<System.Drawing.Image> imageList = new List<System.Drawing.Image>();
-            ImageList imageList = new ImageList();
-            imageList.ImageSize = new Size(128, 128);
-            imageList.ColorDepth = ColorDepth.Depth32Bit;
-
-            int imageIndex = 0;
-
-            foreach (Models.Image i in currentProject.Images)
+            if (lstImages.InvokeRequired)
             {
-                imageList.Images.Add(System.Drawing.Image.FromFile(i.FilePath));
-
-                lstImages.Items.Add(new ListViewItem()
-                {
-                    Text = i.FileName,
-                    ToolTipText = i.FilePath,
-                    ImageIndex = imageIndex
-                });
-
-                imageIndex++;
+                lstImages.Invoke(new delBindList(BindList));
             }
+            else
+            {
+                lstImages.Items.Clear();
 
-            lstImages.LargeImageList = imageList;
-            lstImages.View = View.LargeIcon;
+                //List<System.Drawing.Image> imageList = new List<System.Drawing.Image>();
+                ImageList imageList = new ImageList();
+                imageList.ImageSize = new Size(128, 128);
+                imageList.ColorDepth = ColorDepth.Depth32Bit;
+
+                int imageIndex = 0;
+
+                foreach (Models.Image i in currentProject.Images)
+                {
+                    UpdateStatus(String.Format("Loading image {0} of {1}", imageIndex + 1, currentProject.Images.Count));
+
+                    imageList.Images.Add(System.Drawing.Image.FromFile(i.FilePath));
+
+                    lstImages.Items.Add(new ListViewItem()
+                    {
+                        Text = i.FileName,
+                        ToolTipText = i.FilePath,
+                        ImageIndex = imageIndex
+                    });
+
+                    imageIndex++;
+
+                    Application.DoEvents();
+                }
+
+                lstImages.LargeImageList = imageList;
+                lstImages.View = View.LargeIcon;
+
+                lstImages.SelectedIndexChanged += lstImages_SelectedIndexChanged;
+
+                UpdateStatus("Ready");
+            }
         }
 
         private void lstImages_SelectedIndexChanged(object sender, EventArgs e)
