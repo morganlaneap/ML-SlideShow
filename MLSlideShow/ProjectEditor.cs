@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 using MLSlideShow.Models;
 using MLSlideShow.Helpers;
@@ -24,7 +24,22 @@ namespace MLSlideShow
         {
             InitializeComponent();
             CreateNewProject();
+            UpdateStatus("Ready");
         }
+
+        #region Status bar and thread safe code
+        private delegate void delUpdateStatus(string status);
+        private void UpdateStatus(string status)
+        {
+            if (mainToolstrip.InvokeRequired)
+            {
+                mainToolstrip.Invoke(new delUpdateStatus(UpdateStatus), status);
+            } else
+            {
+                lblStatus.Text = status;
+            }
+        }
+        #endregion
 
         #region Logic Methods
         private void SetTitle(string title)
@@ -42,7 +57,8 @@ namespace MLSlideShow
             currentProject = project;
             lstImages.Items.Clear();
             picturePreview.Image = null;
-            this.Text = "";
+            this.Text = "MLSlideShow";
+            currentProjectFilePath = "";
         }
 
         private void OpenProject()

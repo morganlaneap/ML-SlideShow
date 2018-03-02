@@ -31,12 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectEditor));
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveProjectAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.slideShowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sfdMain = new System.Windows.Forms.SaveFileDialog();
@@ -45,18 +40,26 @@
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lstImages = new System.Windows.Forms.ListView();
+            this.mainToolstrip = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.mainStatus = new System.Windows.Forms.StatusStrip();
+            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.picturePreview = new System.Windows.Forms.PictureBox();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbNewProject = new System.Windows.Forms.ToolStripButton();
             this.tsbOpenProject = new System.Windows.Forms.ToolStripButton();
             this.tsbSaveProject = new System.Windows.Forms.ToolStripButton();
             this.tsbSaveProjectAs = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbAddImageFolder = new System.Windows.Forms.ToolStripButton();
             this.tsbAddImage = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbPlay = new System.Windows.Forms.ToolStripButton();
+            this.newProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveProjectAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
+            this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
@@ -64,8 +67,9 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.mainToolstrip.SuspendLayout();
+            this.mainStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picturePreview)).BeginInit();
-            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMenu
@@ -92,45 +96,10 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
-            // newProjectToolStripMenuItem
-            // 
-            this.newProjectToolStripMenuItem.Name = "newProjectToolStripMenuItem";
-            this.newProjectToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.newProjectToolStripMenuItem.Text = "New Project...";
-            this.newProjectToolStripMenuItem.Click += new System.EventHandler(this.newProjectToolStripMenuItem_Click);
-            // 
-            // openProjectToolStripMenuItem
-            // 
-            this.openProjectToolStripMenuItem.Name = "openProjectToolStripMenuItem";
-            this.openProjectToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.openProjectToolStripMenuItem.Text = "Open Project...";
-            this.openProjectToolStripMenuItem.Click += new System.EventHandler(this.openProjectToolStripMenuItem_Click);
-            // 
-            // saveProjectToolStripMenuItem
-            // 
-            this.saveProjectToolStripMenuItem.Name = "saveProjectToolStripMenuItem";
-            this.saveProjectToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.saveProjectToolStripMenuItem.Text = "Save Project";
-            this.saveProjectToolStripMenuItem.Click += new System.EventHandler(this.saveProjectToolStripMenuItem_Click);
-            // 
-            // saveProjectAsToolStripMenuItem
-            // 
-            this.saveProjectAsToolStripMenuItem.Name = "saveProjectAsToolStripMenuItem";
-            this.saveProjectAsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.saveProjectAsToolStripMenuItem.Text = "Save Project As...";
-            this.saveProjectAsToolStripMenuItem.Click += new System.EventHandler(this.saveProjectAsToolStripMenuItem_Click);
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(160, 6);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // slideShowToolStripMenuItem
             // 
@@ -142,8 +111,9 @@
             // 
             // playToolStripMenuItem
             // 
+            this.playToolStripMenuItem.Image = global::MLSlideShow.Properties.Resources.arrow_right_3;
             this.playToolStripMenuItem.Name = "playToolStripMenuItem";
-            this.playToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.playToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.playToolStripMenuItem.Text = "Play";
             this.playToolStripMenuItem.Click += new System.EventHandler(this.playToolStripMenuItem_Click);
             // 
@@ -158,10 +128,14 @@
             // toolStripContainer1
             // 
             // 
+            // toolStripContainer1.BottomToolStripPanel
+            // 
+            this.toolStripContainer1.BottomToolStripPanel.Controls.Add(this.mainStatus);
+            // 
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.splitContainer1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1448, 695);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1448, 673);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 24);
             this.toolStripContainer1.Name = "toolStripContainer1";
@@ -171,7 +145,7 @@
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.mainToolstrip);
             // 
             // splitContainer1
             // 
@@ -187,9 +161,9 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.picturePreview);
-            this.splitContainer1.Size = new System.Drawing.Size(1448, 695);
+            this.splitContainer1.Size = new System.Drawing.Size(1448, 673);
             this.splitContainer1.SplitterDistance = 791;
-            this.splitContainer1.SplitterWidth = 10;
+            this.splitContainer1.SplitterWidth = 20;
             this.splitContainer1.TabIndex = 2;
             // 
             // lstImages
@@ -198,24 +172,14 @@
             this.lstImages.Location = new System.Drawing.Point(0, 0);
             this.lstImages.MultiSelect = false;
             this.lstImages.Name = "lstImages";
-            this.lstImages.Size = new System.Drawing.Size(789, 693);
+            this.lstImages.Size = new System.Drawing.Size(789, 671);
             this.lstImages.TabIndex = 1;
             this.lstImages.UseCompatibleStateImageBehavior = false;
             // 
-            // picturePreview
+            // mainToolstrip
             // 
-            this.picturePreview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picturePreview.Location = new System.Drawing.Point(0, 0);
-            this.picturePreview.Name = "picturePreview";
-            this.picturePreview.Size = new System.Drawing.Size(645, 693);
-            this.picturePreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picturePreview.TabIndex = 0;
-            this.picturePreview.TabStop = false;
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mainToolstrip.Dock = System.Windows.Forms.DockStyle.None;
+            this.mainToolstrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbNewProject,
             this.tsbOpenProject,
             this.tsbSaveProject,
@@ -225,15 +189,52 @@
             this.tsbAddImage,
             this.toolStripSeparator3,
             this.tsbPlay});
-            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(216, 25);
-            this.toolStrip1.TabIndex = 0;
+            this.mainToolstrip.Location = new System.Drawing.Point(3, 0);
+            this.mainToolstrip.Name = "mainToolstrip";
+            this.mainToolstrip.Size = new System.Drawing.Size(185, 25);
+            this.mainToolstrip.TabIndex = 0;
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // mainStatus
+            // 
+            this.mainStatus.Dock = System.Windows.Forms.DockStyle.None;
+            this.mainStatus.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblStatus});
+            this.mainStatus.Location = new System.Drawing.Point(0, 0);
+            this.mainStatus.Name = "mainStatus";
+            this.mainStatus.Size = new System.Drawing.Size(1448, 22);
+            this.mainStatus.TabIndex = 3;
+            this.mainStatus.Text = "statusStrip1";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(55, 17);
+            this.lblStatus.Text = "[STATUS]";
+            // 
+            // picturePreview
+            // 
+            this.picturePreview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.picturePreview.Location = new System.Drawing.Point(0, 0);
+            this.picturePreview.Name = "picturePreview";
+            this.picturePreview.Size = new System.Drawing.Size(635, 671);
+            this.picturePreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picturePreview.TabIndex = 0;
+            this.picturePreview.TabStop = false;
             // 
             // tsbNewProject
             // 
             this.tsbNewProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbNewProject.Image = ((System.Drawing.Image)(resources.GetObject("tsbNewProject.Image")));
+            this.tsbNewProject.Image = global::MLSlideShow.Properties.Resources.document_new_4;
             this.tsbNewProject.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNewProject.Name = "tsbNewProject";
             this.tsbNewProject.Size = new System.Drawing.Size(23, 22);
@@ -243,7 +244,7 @@
             // tsbOpenProject
             // 
             this.tsbOpenProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbOpenProject.Image = ((System.Drawing.Image)(resources.GetObject("tsbOpenProject.Image")));
+            this.tsbOpenProject.Image = global::MLSlideShow.Properties.Resources.document_open_4;
             this.tsbOpenProject.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbOpenProject.Name = "tsbOpenProject";
             this.tsbOpenProject.Size = new System.Drawing.Size(23, 22);
@@ -253,7 +254,7 @@
             // tsbSaveProject
             // 
             this.tsbSaveProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbSaveProject.Image = ((System.Drawing.Image)(resources.GetObject("tsbSaveProject.Image")));
+            this.tsbSaveProject.Image = global::MLSlideShow.Properties.Resources.document_save_5;
             this.tsbSaveProject.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSaveProject.Name = "tsbSaveProject";
             this.tsbSaveProject.Size = new System.Drawing.Size(23, 22);
@@ -263,22 +264,17 @@
             // tsbSaveProjectAs
             // 
             this.tsbSaveProjectAs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbSaveProjectAs.Image = ((System.Drawing.Image)(resources.GetObject("tsbSaveProjectAs.Image")));
+            this.tsbSaveProjectAs.Image = global::MLSlideShow.Properties.Resources.document_save_as_5;
             this.tsbSaveProjectAs.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSaveProjectAs.Name = "tsbSaveProjectAs";
             this.tsbSaveProjectAs.Size = new System.Drawing.Size(23, 22);
             this.tsbSaveProjectAs.Text = "Save Project As";
             this.tsbSaveProjectAs.Click += new System.EventHandler(this.tsbSaveProjectAs_Click);
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
             // tsbAddImageFolder
             // 
             this.tsbAddImageFolder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbAddImageFolder.Image = ((System.Drawing.Image)(resources.GetObject("tsbAddImageFolder.Image")));
+            this.tsbAddImageFolder.Image = global::MLSlideShow.Properties.Resources.folder_new_7;
             this.tsbAddImageFolder.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbAddImageFolder.Name = "tsbAddImageFolder";
             this.tsbAddImageFolder.Size = new System.Drawing.Size(23, 22);
@@ -288,27 +284,62 @@
             // tsbAddImage
             // 
             this.tsbAddImage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbAddImage.Image = ((System.Drawing.Image)(resources.GetObject("tsbAddImage.Image")));
+            this.tsbAddImage.Image = global::MLSlideShow.Properties.Resources.document_new_6;
             this.tsbAddImage.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbAddImage.Name = "tsbAddImage";
             this.tsbAddImage.Size = new System.Drawing.Size(23, 22);
             this.tsbAddImage.Text = "Add Image";
             this.tsbAddImage.Click += new System.EventHandler(this.tsbAddImage_Click);
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
             // tsbPlay
             // 
             this.tsbPlay.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbPlay.Image = ((System.Drawing.Image)(resources.GetObject("tsbPlay.Image")));
+            this.tsbPlay.Image = global::MLSlideShow.Properties.Resources.arrow_right_3;
             this.tsbPlay.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPlay.Name = "tsbPlay";
             this.tsbPlay.Size = new System.Drawing.Size(23, 22);
             this.tsbPlay.Text = "Play";
             this.tsbPlay.Click += new System.EventHandler(this.tsbPlay_Click);
+            // 
+            // newProjectToolStripMenuItem
+            // 
+            this.newProjectToolStripMenuItem.Image = global::MLSlideShow.Properties.Resources.document_new_4;
+            this.newProjectToolStripMenuItem.Name = "newProjectToolStripMenuItem";
+            this.newProjectToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.newProjectToolStripMenuItem.Text = "New Project...";
+            this.newProjectToolStripMenuItem.Click += new System.EventHandler(this.newProjectToolStripMenuItem_Click);
+            // 
+            // openProjectToolStripMenuItem
+            // 
+            this.openProjectToolStripMenuItem.Image = global::MLSlideShow.Properties.Resources.document_open_4;
+            this.openProjectToolStripMenuItem.Name = "openProjectToolStripMenuItem";
+            this.openProjectToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.openProjectToolStripMenuItem.Text = "Open Project...";
+            this.openProjectToolStripMenuItem.Click += new System.EventHandler(this.openProjectToolStripMenuItem_Click);
+            // 
+            // saveProjectToolStripMenuItem
+            // 
+            this.saveProjectToolStripMenuItem.Image = global::MLSlideShow.Properties.Resources.document_save_5;
+            this.saveProjectToolStripMenuItem.Name = "saveProjectToolStripMenuItem";
+            this.saveProjectToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.saveProjectToolStripMenuItem.Text = "Save Project";
+            this.saveProjectToolStripMenuItem.Click += new System.EventHandler(this.saveProjectToolStripMenuItem_Click);
+            // 
+            // saveProjectAsToolStripMenuItem
+            // 
+            this.saveProjectAsToolStripMenuItem.Image = global::MLSlideShow.Properties.Resources.document_save_as_5;
+            this.saveProjectAsToolStripMenuItem.Name = "saveProjectAsToolStripMenuItem";
+            this.saveProjectAsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.saveProjectAsToolStripMenuItem.Text = "Save Project As...";
+            this.saveProjectAsToolStripMenuItem.Click += new System.EventHandler(this.saveProjectAsToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Image = global::MLSlideShow.Properties.Resources.application_exit_4;
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // ProjectEditor
             // 
@@ -317,12 +348,15 @@
             this.ClientSize = new System.Drawing.Size(1448, 744);
             this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.mainMenu);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mainMenu;
             this.Name = "ProjectEditor";
             this.Text = "MLSlideShow";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
+            this.toolStripContainer1.BottomToolStripPanel.ResumeLayout(false);
+            this.toolStripContainer1.BottomToolStripPanel.PerformLayout();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
@@ -332,9 +366,11 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.mainToolstrip.ResumeLayout(false);
+            this.mainToolstrip.PerformLayout();
+            this.mainStatus.ResumeLayout(false);
+            this.mainStatus.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picturePreview)).EndInit();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -359,7 +395,7 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ListView lstImages;
         private System.Windows.Forms.PictureBox picturePreview;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStrip mainToolstrip;
         private System.Windows.Forms.ToolStripButton tsbNewProject;
         private System.Windows.Forms.ToolStripButton tsbOpenProject;
         private System.Windows.Forms.ToolStripButton tsbSaveProject;
@@ -369,6 +405,8 @@
         private System.Windows.Forms.ToolStripButton tsbAddImage;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton tsbPlay;
+        private System.Windows.Forms.StatusStrip mainStatus;
+        private System.Windows.Forms.ToolStripStatusLabel lblStatus;
     }
 }
 
