@@ -35,6 +35,20 @@ namespace MLSlideShow.Helpers
             return files;
         }
 
+        public List<FileInfo> GetSingleImage(string path)
+        {
+            List<FileInfo> files = new List<FileInfo>();
+
+            FileInfo fi = new FileInfo(path);
+
+            if (Variables.AllowedFileTypes.Contains(fi.Extension))
+            {
+                files.Add(fi);
+            }
+
+            return files;
+        }
+
         public Project LoadProject(string path)
         {
             XmlSerializer xml = new XmlSerializer(typeof(Project));

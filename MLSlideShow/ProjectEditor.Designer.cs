@@ -60,6 +60,7 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbExit = new System.Windows.Forms.ToolStripButton();
+            this.ofdAddImage = new System.Windows.Forms.OpenFileDialog();
             this.mainMenu.SuspendLayout();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -195,7 +196,7 @@
             this.tsbExit});
             this.mainToolstrip.Location = new System.Drawing.Point(3, 0);
             this.mainToolstrip.Name = "mainToolstrip";
-            this.mainToolstrip.Size = new System.Drawing.Size(245, 25);
+            this.mainToolstrip.Size = new System.Drawing.Size(214, 25);
             this.mainToolstrip.TabIndex = 0;
             // 
             // toolStripSeparator2
@@ -360,6 +361,10 @@
             this.tsbExit.Text = "Exit";
             this.tsbExit.Click += new System.EventHandler(this.tsbExit_Click);
             // 
+            // ofdAddImage
+            // 
+            this.ofdAddImage.Filter = "Image files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
+            // 
             // ProjectEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -428,6 +433,7 @@
         private System.Windows.Forms.ToolStripStatusLabel lblStatus;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton tsbExit;
+        private System.Windows.Forms.OpenFileDialog ofdAddImage;
     }
 }
 

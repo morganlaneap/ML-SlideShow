@@ -8,6 +8,6 @@ namespace MLSlideShow
 {
     public class Variables
     {
-        public static List<string> AllowedFileTypes = new List<string>() { ".jpg", ".png", ".gif", ".jpeg" };
+        public static List<string> AllowedFileTypes = new List<string>() { ".jpg", ".png", ".gif", ".jpeg", ".bmp" };
     }
 }

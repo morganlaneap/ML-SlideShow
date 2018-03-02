@@ -130,7 +130,20 @@ namespace MLSlideShow
 
         private void AddImage()
         {
+            if (ofdAddImage.ShowDialog() == DialogResult.OK)
+            {
+                Thread t = new Thread(() =>
+                {
+                    UpdateStatus("Indexing file...");
 
+                    List<FileInfo> files = ioHelper.GetSingleImage(ofdAddImage.FileName);
+
+                    LoadImages(files);
+                });
+                t.IsBackground = true;
+                t.SetApartmentState(ApartmentState.STA);
+                t.Start();
+            }
         }
 
         private void LoadImages(List<FileInfo> files)
@@ -212,7 +225,7 @@ namespace MLSlideShow
 
         private void tsbAddImage_Click(object sender, EventArgs e)
         {
-
+            AddImage();
         }
 
         private void tsbPlay_Click(object sender, EventArgs e)
