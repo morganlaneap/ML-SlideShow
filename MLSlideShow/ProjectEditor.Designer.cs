@@ -58,6 +58,8 @@
             this.saveProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveProjectAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbExit = new System.Windows.Forms.ToolStripButton();
             this.mainMenu.SuspendLayout();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -188,10 +190,12 @@
             this.tsbAddImageFolder,
             this.tsbAddImage,
             this.toolStripSeparator3,
-            this.tsbPlay});
+            this.tsbPlay,
+            this.toolStripSeparator4,
+            this.tsbExit});
             this.mainToolstrip.Location = new System.Drawing.Point(3, 0);
             this.mainToolstrip.Name = "mainToolstrip";
-            this.mainToolstrip.Size = new System.Drawing.Size(185, 25);
+            this.mainToolstrip.Size = new System.Drawing.Size(245, 25);
             this.mainToolstrip.TabIndex = 0;
             // 
             // toolStripSeparator2
@@ -341,6 +345,21 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsbExit
+            // 
+            this.tsbExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbExit.Image = global::MLSlideShow.Properties.Resources.application_exit_4;
+            this.tsbExit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbExit.Name = "tsbExit";
+            this.tsbExit.Size = new System.Drawing.Size(23, 22);
+            this.tsbExit.Text = "Exit";
+            this.tsbExit.Click += new System.EventHandler(this.tsbExit_Click);
+            // 
             // ProjectEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -407,6 +426,8 @@
         private System.Windows.Forms.ToolStripButton tsbPlay;
         private System.Windows.Forms.StatusStrip mainStatus;
         private System.Windows.Forms.ToolStripStatusLabel lblStatus;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripButton tsbExit;
     }
 }
 

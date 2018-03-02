@@ -24,8 +24,16 @@ namespace MLSlideShow
         public ProjectEditor()
         {
             InitializeComponent();
-            CreateNewProject();
+            CreateNewProject(false);
             UpdateStatus("Ready");
+        }
+
+        private void Exit()
+        {
+            if (MessageBox.Show("Are you sure you want to exit?", "Exit", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                Environment.Exit(0);
+            }
         }
 
         #region Status bar and thread safe code
@@ -48,8 +56,16 @@ namespace MLSlideShow
             this.Text = "MLSlideShow - " + title;
         }
 
-        private void CreateNewProject()
+        private void CreateNewProject(bool prompt)
         {
+            if (prompt)
+            {
+                if (MessageBox.Show("Are you sure you want to create a new project?", "New Project", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                {
+                    return;
+                }
+            }
+
             Project project = new Project();
             project.ProjectName = "New Project";
             project.ProjectVersion = APP_VERSION;
@@ -141,7 +157,7 @@ namespace MLSlideShow
         #region Click Events
         private void newProjectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CreateNewProject();
+            CreateNewProject(true);
         }
 
         private void openProjectToolStripMenuItem_Click(object sender, EventArgs e)
@@ -161,7 +177,7 @@ namespace MLSlideShow
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Environment.Exit(0);
+            Exit();
         }
 
         private void playToolStripMenuItem_Click(object sender, EventArgs e)
@@ -171,7 +187,7 @@ namespace MLSlideShow
 
         private void tsbNewProject_Click(object sender, EventArgs e)
         {
-            CreateNewProject();
+            CreateNewProject(true);
         }
 
         private void tsbOpenProject_Click(object sender, EventArgs e)
@@ -202,6 +218,11 @@ namespace MLSlideShow
         private void tsbPlay_Click(object sender, EventArgs e)
         {
             PlaySlideShow();
+        }
+
+        private void tsbExit_Click(object sender, EventArgs e)
+        {
+            Exit();
         }
         #endregion
 
@@ -276,6 +297,8 @@ namespace MLSlideShow
                 ss.Show();
             }
         }
-        #endregion        
+        #endregion
+
+        
     }
 }
