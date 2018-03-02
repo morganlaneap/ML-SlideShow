@@ -28,35 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectEditor));
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.slideShowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.lstImages = new System.Windows.Forms.ListView();
             this.newProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveProjectAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.slideShowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.playToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sfdMain = new System.Windows.Forms.SaveFileDialog();
-            this.btnAddImageFolder = new System.Windows.Forms.Button();
-            this.btnAddSelectImages = new System.Windows.Forms.Button();
             this.fbdMain = new System.Windows.Forms.FolderBrowserDialog();
             this.ofdMain = new System.Windows.Forms.OpenFileDialog();
+            this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lstImages = new System.Windows.Forms.ListView();
             this.picturePreview = new System.Windows.Forms.PictureBox();
-            this.playToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsbNewProject = new System.Windows.Forms.ToolStripButton();
+            this.tsbOpenProject = new System.Windows.Forms.ToolStripButton();
+            this.tsbSaveProject = new System.Windows.Forms.ToolStripButton();
+            this.tsbSaveProjectAs = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbAddImageFolder = new System.Windows.Forms.ToolStripButton();
+            this.tsbAddImage = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbPlay = new System.Windows.Forms.ToolStripButton();
             this.mainMenu.SuspendLayout();
+            this.toolStripContainer1.ContentPanel.SuspendLayout();
+            this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
+            this.toolStripContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picturePreview)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainMenu
@@ -82,66 +91,6 @@
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
-            // 
-            // slideShowToolStripMenuItem
-            // 
-            this.slideShowToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.playToolStripMenuItem});
-            this.slideShowToolStripMenuItem.Name = "slideShowToolStripMenuItem";
-            this.slideShowToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
-            this.slideShowToolStripMenuItem.Text = "SlideShow";
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 24);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.picturePreview);
-            this.splitContainer1.Size = new System.Drawing.Size(1448, 720);
-            this.splitContainer1.SplitterDistance = 791;
-            this.splitContainer1.SplitterWidth = 10;
-            this.splitContainer1.TabIndex = 1;
-            // 
-            // splitContainer2
-            // 
-            this.splitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.IsSplitterFixed = true;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.Controls.Add(this.lstImages);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.btnAddSelectImages);
-            this.splitContainer2.Panel2.Controls.Add(this.btnAddImageFolder);
-            this.splitContainer2.Size = new System.Drawing.Size(791, 720);
-            this.splitContainer2.SplitterDistance = 631;
-            this.splitContainer2.SplitterWidth = 10;
-            this.splitContainer2.TabIndex = 0;
-            // 
-            // lstImages
-            // 
-            this.lstImages.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstImages.Location = new System.Drawing.Point(0, 0);
-            this.lstImages.MultiSelect = false;
-            this.lstImages.Name = "lstImages";
-            this.lstImages.Size = new System.Drawing.Size(789, 629);
-            this.lstImages.TabIndex = 0;
-            this.lstImages.UseCompatibleStateImageBehavior = false;
-            this.lstImages.SelectedIndexChanged += new System.EventHandler(this.lstImages_SelectedIndexChanged);
             // 
             // newProjectToolStripMenuItem
             // 
@@ -183,56 +132,190 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // slideShowToolStripMenuItem
+            // 
+            this.slideShowToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.playToolStripMenuItem});
+            this.slideShowToolStripMenuItem.Name = "slideShowToolStripMenuItem";
+            this.slideShowToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
+            this.slideShowToolStripMenuItem.Text = "SlideShow";
+            // 
+            // playToolStripMenuItem
+            // 
+            this.playToolStripMenuItem.Name = "playToolStripMenuItem";
+            this.playToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
+            this.playToolStripMenuItem.Text = "Play";
+            this.playToolStripMenuItem.Click += new System.EventHandler(this.playToolStripMenuItem_Click);
+            // 
             // sfdMain
             // 
             this.sfdMain.Filter = "MLSlideShow project files|*.mlslideshow";
             // 
-            // btnAddImageFolder
-            // 
-            this.btnAddImageFolder.Location = new System.Drawing.Point(11, 11);
-            this.btnAddImageFolder.Name = "btnAddImageFolder";
-            this.btnAddImageFolder.Size = new System.Drawing.Size(130, 54);
-            this.btnAddImageFolder.TabIndex = 0;
-            this.btnAddImageFolder.Text = "Add Image Folder";
-            this.btnAddImageFolder.UseVisualStyleBackColor = true;
-            this.btnAddImageFolder.Click += new System.EventHandler(this.btnAddImageFolder_Click);
-            // 
-            // btnAddSelectImages
-            // 
-            this.btnAddSelectImages.Location = new System.Drawing.Point(147, 11);
-            this.btnAddSelectImages.Name = "btnAddSelectImages";
-            this.btnAddSelectImages.Size = new System.Drawing.Size(130, 54);
-            this.btnAddSelectImages.TabIndex = 1;
-            this.btnAddSelectImages.Text = "Add Images";
-            this.btnAddSelectImages.UseVisualStyleBackColor = true;
-            // 
             // ofdMain
             // 
             this.ofdMain.Filter = "MLSlideShow project files|*.mlslideshow";
+            // 
+            // toolStripContainer1
+            // 
+            // 
+            // toolStripContainer1.ContentPanel
+            // 
+            this.toolStripContainer1.ContentPanel.Controls.Add(this.splitContainer1);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1448, 695);
+            this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toolStripContainer1.Location = new System.Drawing.Point(0, 24);
+            this.toolStripContainer1.Name = "toolStripContainer1";
+            this.toolStripContainer1.Size = new System.Drawing.Size(1448, 720);
+            this.toolStripContainer1.TabIndex = 1;
+            this.toolStripContainer1.Text = "toolStripContainer1";
+            // 
+            // toolStripContainer1.TopToolStripPanel
+            // 
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.lstImages);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.picturePreview);
+            this.splitContainer1.Size = new System.Drawing.Size(1448, 695);
+            this.splitContainer1.SplitterDistance = 791;
+            this.splitContainer1.SplitterWidth = 10;
+            this.splitContainer1.TabIndex = 2;
+            // 
+            // lstImages
+            // 
+            this.lstImages.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstImages.Location = new System.Drawing.Point(0, 0);
+            this.lstImages.MultiSelect = false;
+            this.lstImages.Name = "lstImages";
+            this.lstImages.Size = new System.Drawing.Size(789, 693);
+            this.lstImages.TabIndex = 1;
+            this.lstImages.UseCompatibleStateImageBehavior = false;
             // 
             // picturePreview
             // 
             this.picturePreview.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picturePreview.Location = new System.Drawing.Point(0, 0);
             this.picturePreview.Name = "picturePreview";
-            this.picturePreview.Size = new System.Drawing.Size(645, 718);
+            this.picturePreview.Size = new System.Drawing.Size(645, 693);
             this.picturePreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picturePreview.TabIndex = 0;
             this.picturePreview.TabStop = false;
             // 
-            // playToolStripMenuItem
+            // toolStrip1
             // 
-            this.playToolStripMenuItem.Name = "playToolStripMenuItem";
-            this.playToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.playToolStripMenuItem.Text = "Play";
-            this.playToolStripMenuItem.Click += new System.EventHandler(this.playToolStripMenuItem_Click);
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbNewProject,
+            this.tsbOpenProject,
+            this.tsbSaveProject,
+            this.tsbSaveProjectAs,
+            this.toolStripSeparator2,
+            this.tsbAddImageFolder,
+            this.tsbAddImage,
+            this.toolStripSeparator3,
+            this.tsbPlay});
+            this.toolStrip1.Location = new System.Drawing.Point(3, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(216, 25);
+            this.toolStrip1.TabIndex = 0;
+            // 
+            // tsbNewProject
+            // 
+            this.tsbNewProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbNewProject.Image = ((System.Drawing.Image)(resources.GetObject("tsbNewProject.Image")));
+            this.tsbNewProject.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNewProject.Name = "tsbNewProject";
+            this.tsbNewProject.Size = new System.Drawing.Size(23, 22);
+            this.tsbNewProject.Text = "New Project";
+            this.tsbNewProject.Click += new System.EventHandler(this.tsbNewProject_Click);
+            // 
+            // tsbOpenProject
+            // 
+            this.tsbOpenProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbOpenProject.Image = ((System.Drawing.Image)(resources.GetObject("tsbOpenProject.Image")));
+            this.tsbOpenProject.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbOpenProject.Name = "tsbOpenProject";
+            this.tsbOpenProject.Size = new System.Drawing.Size(23, 22);
+            this.tsbOpenProject.Text = "Open Project";
+            this.tsbOpenProject.Click += new System.EventHandler(this.tsbOpenProject_Click);
+            // 
+            // tsbSaveProject
+            // 
+            this.tsbSaveProject.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbSaveProject.Image = ((System.Drawing.Image)(resources.GetObject("tsbSaveProject.Image")));
+            this.tsbSaveProject.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSaveProject.Name = "tsbSaveProject";
+            this.tsbSaveProject.Size = new System.Drawing.Size(23, 22);
+            this.tsbSaveProject.Text = "Save Project";
+            this.tsbSaveProject.Click += new System.EventHandler(this.tsbSaveProject_Click);
+            // 
+            // tsbSaveProjectAs
+            // 
+            this.tsbSaveProjectAs.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbSaveProjectAs.Image = ((System.Drawing.Image)(resources.GetObject("tsbSaveProjectAs.Image")));
+            this.tsbSaveProjectAs.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSaveProjectAs.Name = "tsbSaveProjectAs";
+            this.tsbSaveProjectAs.Size = new System.Drawing.Size(23, 22);
+            this.tsbSaveProjectAs.Text = "Save Project As";
+            this.tsbSaveProjectAs.Click += new System.EventHandler(this.tsbSaveProjectAs_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsbAddImageFolder
+            // 
+            this.tsbAddImageFolder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbAddImageFolder.Image = ((System.Drawing.Image)(resources.GetObject("tsbAddImageFolder.Image")));
+            this.tsbAddImageFolder.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAddImageFolder.Name = "tsbAddImageFolder";
+            this.tsbAddImageFolder.Size = new System.Drawing.Size(23, 22);
+            this.tsbAddImageFolder.Text = "Add Image Folder";
+            this.tsbAddImageFolder.Click += new System.EventHandler(this.tsbAddImageFolder_Click);
+            // 
+            // tsbAddImage
+            // 
+            this.tsbAddImage.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbAddImage.Image = ((System.Drawing.Image)(resources.GetObject("tsbAddImage.Image")));
+            this.tsbAddImage.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAddImage.Name = "tsbAddImage";
+            this.tsbAddImage.Size = new System.Drawing.Size(23, 22);
+            this.tsbAddImage.Text = "Add Image";
+            this.tsbAddImage.Click += new System.EventHandler(this.tsbAddImage_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsbPlay
+            // 
+            this.tsbPlay.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbPlay.Image = ((System.Drawing.Image)(resources.GetObject("tsbPlay.Image")));
+            this.tsbPlay.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbPlay.Name = "tsbPlay";
+            this.tsbPlay.Size = new System.Drawing.Size(23, 22);
+            this.tsbPlay.Text = "Play";
+            this.tsbPlay.Click += new System.EventHandler(this.tsbPlay_Click);
             // 
             // ProjectEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1448, 744);
-            this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.toolStripContainer1);
             this.Controls.Add(this.mainMenu);
             this.MainMenuStrip = this.mainMenu;
             this.Name = "ProjectEditor";
@@ -240,15 +323,18 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
+            this.toolStripContainer1.ContentPanel.ResumeLayout(false);
+            this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
+            this.toolStripContainer1.TopToolStripPanel.PerformLayout();
+            this.toolStripContainer1.ResumeLayout(false);
+            this.toolStripContainer1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picturePreview)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -259,9 +345,6 @@
         private System.Windows.Forms.MenuStrip mainMenu;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem slideShowToolStripMenuItem;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.ListView lstImages;
         private System.Windows.Forms.ToolStripMenuItem newProjectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openProjectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveProjectToolStripMenuItem;
@@ -269,12 +352,23 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog sfdMain;
-        private System.Windows.Forms.Button btnAddImageFolder;
-        private System.Windows.Forms.Button btnAddSelectImages;
         private System.Windows.Forms.FolderBrowserDialog fbdMain;
         private System.Windows.Forms.OpenFileDialog ofdMain;
-        private System.Windows.Forms.PictureBox picturePreview;
         private System.Windows.Forms.ToolStripMenuItem playToolStripMenuItem;
+        private System.Windows.Forms.ToolStripContainer toolStripContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.ListView lstImages;
+        private System.Windows.Forms.PictureBox picturePreview;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton tsbNewProject;
+        private System.Windows.Forms.ToolStripButton tsbOpenProject;
+        private System.Windows.Forms.ToolStripButton tsbSaveProject;
+        private System.Windows.Forms.ToolStripButton tsbSaveProjectAs;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton tsbAddImageFolder;
+        private System.Windows.Forms.ToolStripButton tsbAddImage;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton tsbPlay;
     }
 }
 

@@ -26,6 +26,7 @@ namespace MLSlideShow
             CreateNewProject();
         }
 
+        #region Logic Methods
         private void SetTitle(string title)
         {
             this.Text = "MLSlideShow - " + title;
@@ -41,6 +42,53 @@ namespace MLSlideShow
             currentProject = project;
             lstImages.Items.Clear();
             picturePreview.Image = null;
+            this.Text = "";
+        }
+
+        private void OpenProject()
+        {
+            if (ofdMain.ShowDialog() == DialogResult.OK)
+            {
+                Project project = ioHelper.LoadProject(ofdMain.FileName);
+                currentProject = project;
+                BindList();
+                currentProjectFilePath = ofdMain.FileName;
+                SetTitle(currentProjectFilePath);
+            }
+        }
+
+        private void SaveProject()
+        {
+            if (currentProjectFilePath != null && currentProjectFilePath != "")
+            {
+                ioHelper.SaveProject(currentProject, currentProjectFilePath);
+                SetTitle(currentProjectFilePath);
+            }
+        }
+
+        private void SaveProjectAs()
+        {
+            if (sfdMain.ShowDialog() == DialogResult.OK)
+            {
+                ioHelper.SaveProject(currentProject, sfdMain.FileName);
+                currentProjectFilePath = sfdMain.FileName;
+                SetTitle(currentProjectFilePath);
+            }
+        }
+
+        private void AddImageFolder()
+        {
+            if (fbdMain.ShowDialog() == DialogResult.OK)
+            {
+                List<FileInfo> files = ioHelper.GetImagesFromDirectory(fbdMain.SelectedPath);
+
+                LoadImages(files);
+            }
+        }
+
+        private void AddImage()
+        {
+
         }
 
         private void LoadImages(List<FileInfo> files)
@@ -55,8 +103,77 @@ namespace MLSlideShow
             }
 
             BindList();
+        }       
+        #endregion
+
+        #region Click Events
+        private void newProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateNewProject();
         }
 
+        private void openProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenProject();
+        }
+
+        private void saveProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveProject();
+        }
+
+        private void saveProjectAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveProjectAs();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void playToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PlaySlideShow();
+        }
+
+        private void tsbNewProject_Click(object sender, EventArgs e)
+        {
+            CreateNewProject();
+        }
+
+        private void tsbOpenProject_Click(object sender, EventArgs e)
+        {
+            OpenProject();
+        }
+
+        private void tsbSaveProject_Click(object sender, EventArgs e)
+        {
+            SaveProject();
+        }
+
+        private void tsbSaveProjectAs_Click(object sender, EventArgs e)
+        {
+            SaveProjectAs();
+        }
+
+        private void tsbAddImageFolder_Click(object sender, EventArgs e)
+        {
+            AddImageFolder();
+        }
+
+        private void tsbAddImage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsbPlay_Click(object sender, EventArgs e)
+        {
+            PlaySlideShow();
+        }
+        #endregion
+
+        #region ListView events
         private void BindList()
         {
             lstImages.Items.Clear();
@@ -86,58 +203,6 @@ namespace MLSlideShow
             lstImages.View = View.LargeIcon;
         }
 
-        #region Click Events
-        private void newProjectToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CreateNewProject();
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Environment.Exit(0);
-        }
-
-        private void saveProjectAsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (sfdMain.ShowDialog() == DialogResult.OK)
-            {
-                ioHelper.SaveProject(currentProject, sfdMain.FileName);
-                currentProjectFilePath = sfdMain.FileName;
-                SetTitle(currentProjectFilePath);
-            }
-        }
-
-        private void btnAddImageFolder_Click(object sender, EventArgs e)
-        {
-            if (fbdMain.ShowDialog() == DialogResult.OK)
-            {
-                List<FileInfo> files = ioHelper.GetImagesFromDirectory(fbdMain.SelectedPath);
-
-                LoadImages(files);
-            }
-        }
-
-        private void saveProjectToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (currentProjectFilePath != null && currentProjectFilePath != "")
-            {
-                ioHelper.SaveProject(currentProject, currentProjectFilePath);
-                SetTitle(currentProjectFilePath);
-            }
-        }
-
-        private void openProjectToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (ofdMain.ShowDialog() == DialogResult.OK)
-            {
-                Project project = ioHelper.LoadProject(ofdMain.FileName);
-                currentProject = project;
-                BindList();
-                currentProjectFilePath = ofdMain.FileName;
-                SetTitle(currentProjectFilePath);
-            }
-        }
-
         private void lstImages_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lstImages.SelectedItems.Count > 0)
@@ -147,7 +212,8 @@ namespace MLSlideShow
         }
         #endregion
 
-        private void playToolStripMenuItem_Click(object sender, EventArgs e)
+        #region SlideShow logic
+        private void PlaySlideShow()
         {
             if (currentProject.Images.Count == 0)
             {
@@ -160,5 +226,6 @@ namespace MLSlideShow
                 ss.Show();
             }
         }
+        #endregion        
     }
 }
