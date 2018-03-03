@@ -64,8 +64,10 @@ namespace MLSlideShow
 
         #region Logic Methods
         private void SetTitle(string title, bool prefix = true)
-        {          
-            this.Text = (prefix ? "MLSlideShow - " : "") + title;
+        {
+            var p = (prefix ? "MLSlideShow - " : "");
+
+            this.Text = p + title;
         }
 
         public void MarkSavePending()
@@ -75,7 +77,7 @@ namespace MLSlideShow
             SetTitle("*" + oldTitle, false);
         }
 
-        private void ClearSavePending()
+        private void ClearSavePending(bool prefix = false)
         {
             isSavePending = false;
 
@@ -84,7 +86,7 @@ namespace MLSlideShow
                 oldTitle = currentProjectFilePath;
             }
 
-            SetTitle(oldTitle, false);
+            SetTitle(oldTitle, prefix);
         }
 
         private void CreateNewProject(bool prompt)
@@ -127,8 +129,9 @@ namespace MLSlideShow
                 currentProject = project;
                 BindList();
                 currentProjectFilePath = ofdMain.FileName;
-                SetTitle(currentProjectFilePath);
-                ClearSavePending();
+                SetTitle(currentProjectFilePath, true);
+                oldTitle = currentProjectFilePath;
+                ClearSavePending(true);
             }
         }
 
@@ -138,7 +141,8 @@ namespace MLSlideShow
             {
                 ioHelper.SaveProject(currentProject, currentProjectFilePath);
                 SetTitle(currentProjectFilePath);
-                ClearSavePending();
+                oldTitle = currentProjectFilePath;
+                ClearSavePending(true);
             }
         }
 
@@ -148,8 +152,9 @@ namespace MLSlideShow
             {
                 ioHelper.SaveProject(currentProject, sfdMain.FileName);
                 currentProjectFilePath = sfdMain.FileName;
-                SetTitle(currentProjectFilePath);
-                ClearSavePending();
+                SetTitle(currentProjectFilePath, true);
+                oldTitle = currentProjectFilePath;
+                ClearSavePending(true);
             }
         }
 
