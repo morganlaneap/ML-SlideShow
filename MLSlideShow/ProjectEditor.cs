@@ -16,7 +16,7 @@ namespace MLSlideShow
 {
     public partial class ProjectEditor : Form
     {
-        public const string APP_VERSION = "1.0";
+        public const string APP_VERSION = "1.1";
         public Project currentProject { get; set; }
         public string currentProjectFilePath { get; set; }
         private IOHelper ioHelper = new IOHelper();
