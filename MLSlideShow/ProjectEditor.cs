@@ -68,7 +68,7 @@ namespace MLSlideShow
             this.Text = (prefix ? "MLSlideShow - " : "") + title;
         }
 
-        private void MarkSavePending()
+        public void MarkSavePending()
         {
             oldTitle = this.Text;
             isSavePending = true;
@@ -132,7 +132,7 @@ namespace MLSlideShow
             }
         }
 
-        private void SaveProject()
+        public void SaveProject()
         {
             if (currentProjectFilePath != null && currentProjectFilePath != "")
             {
@@ -221,6 +221,12 @@ namespace MLSlideShow
             t.SetApartmentState(ApartmentState.STA);
             t.Start();
         }
+
+        private void ShowSettings()
+        {
+            SettingsForm sf = new SettingsForm(this);
+            sf.Show();
+        }
         #endregion
 
         #region Click Events
@@ -293,6 +299,16 @@ namespace MLSlideShow
         {
             Exit(new FormClosingEventArgs(CloseReason.ApplicationExitCall, false));
         }
+
+        private void tsbSlideShowSettings_Click(object sender, EventArgs e)
+        {
+            ShowSettings();
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowSettings();
+        }
         #endregion
 
         #region ListView events
@@ -363,7 +379,7 @@ namespace MLSlideShow
             }
             else
             {
-                SlideShow ss = new SlideShow(currentProject.Images, this);
+                SlideShow ss = new SlideShow(currentProject.Images, this, delay: currentProject.SlideShowDelay);
                 this.Hide();
                 ss.Show();
             }
@@ -376,7 +392,7 @@ namespace MLSlideShow
             if (lstImages.SelectedIndices.Count > 0)
             {
                 int index = lstImages.SelectedIndices[0];
-                SlideShow ss = new SlideShow(currentProject.Images, this, index);
+                SlideShow ss = new SlideShow(currentProject.Images, this, index, delay: currentProject.SlideShowDelay);
                 this.Hide();
                 ss.Show();
             }
@@ -397,6 +413,6 @@ namespace MLSlideShow
         private void ProjectEditor_FormClosing(object sender, FormClosingEventArgs e)
         {
             Exit(e);
-        }
+        }        
     }
 }

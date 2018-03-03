@@ -77,6 +77,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\ImageHelper.cs" />
+    <Compile Include="SettingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SlideShow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +114,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SlideShow.resx">
       <DependentUpon>SlideShow.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\system-settings.png" />
     <None Include="Resources\application-exit-4.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -14,14 +14,16 @@ namespace MLSlideShow
     {
         private List<Models.Image> imageList = new List<Models.Image>();
         private int currentIndex = 0;
+        private int _delay = 3000;
         private ProjectEditor _oldForm { get; set; }
         Thread slideShowThread;
 
-        public SlideShow(List<Models.Image> images, ProjectEditor oldForm, int startFrom = 0)
+        public SlideShow(List<Models.Image> images, ProjectEditor oldForm, int startFrom = 0, int delay = 3000)
         {
             InitializeComponent();
             currentIndex = startFrom;
             _oldForm = oldForm;
+            _delay = delay;
             imageList = images;
             slideShowThread = new Thread(RunSlideShow);
             slideShowThread.IsBackground = true;
@@ -43,7 +45,7 @@ namespace MLSlideShow
                 currentIndex++;
             }
 
-            Thread.Sleep(3000);
+            Thread.Sleep(_delay);
             RunSlideShow();
         }
 

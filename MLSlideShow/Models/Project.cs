@@ -10,9 +10,6 @@ namespace MLSlideShow.Models
     [XmlRoot("Project"), Serializable]
     public class Project
     {
-        [XmlArray("Images")]
-        public List<Image> Images { get; set; }
-
         [XmlElement("ProjectName")]
         public string ProjectName { get; set; }
 
@@ -21,5 +18,11 @@ namespace MLSlideShow.Models
 
         [XmlElement("DateCreated")]
         public DateTime DateCreated { get; set; }
+
+        [XmlElement("SlideShowDelay")]
+        public int SlideShowDelay { get; set; }
+
+        [XmlArray("Images")]
+        public List<Image> Images { get; set; }        
     }
 }

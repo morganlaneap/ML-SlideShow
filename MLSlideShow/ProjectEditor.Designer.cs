@@ -34,18 +34,22 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.slideShowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.playToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sfdMain = new System.Windows.Forms.SaveFileDialog();
             this.fbdMain = new System.Windows.Forms.FolderBrowserDialog();
             this.ofdMain = new System.Windows.Forms.OpenFileDialog();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
+            this.mainStatus = new System.Windows.Forms.StatusStrip();
+            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lstImages = new System.Windows.Forms.ListView();
+            this.imageContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.startSlideShowHereToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainToolstrip = new System.Windows.Forms.ToolStrip();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.mainStatus = new System.Windows.Forms.StatusStrip();
-            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.ofdAddImage = new System.Windows.Forms.OpenFileDialog();
             this.picturePreview = new System.Windows.Forms.PictureBox();
             this.tsbNewProject = new System.Windows.Forms.ToolStripButton();
             this.tsbOpenProject = new System.Windows.Forms.ToolStripButton();
@@ -54,30 +58,28 @@
             this.tsbAddImageFolder = new System.Windows.Forms.ToolStripButton();
             this.tsbAddImage = new System.Windows.Forms.ToolStripButton();
             this.tsbPlay = new System.Windows.Forms.ToolStripButton();
+            this.tsbSlideShowSettings = new System.Windows.Forms.ToolStripButton();
+            this.tsbExit = new System.Windows.Forms.ToolStripButton();
             this.newProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveProjectAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbExit = new System.Windows.Forms.ToolStripButton();
-            this.ofdAddImage = new System.Windows.Forms.OpenFileDialog();
-            this.imageContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.removeImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.startSlideShowHereToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.playToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainMenu.SuspendLayout();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
+            this.mainStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.mainToolstrip.SuspendLayout();
-            this.mainStatus.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picturePreview)).BeginInit();
             this.imageContextMenu.SuspendLayout();
+            this.mainToolstrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picturePreview)).BeginInit();
             this.SuspendLayout();
             // 
             // mainMenu
@@ -112,18 +114,11 @@
             // slideShowToolStripMenuItem
             // 
             this.slideShowToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.playToolStripMenuItem});
+            this.playToolStripMenuItem,
+            this.settingsToolStripMenuItem});
             this.slideShowToolStripMenuItem.Name = "slideShowToolStripMenuItem";
             this.slideShowToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
             this.slideShowToolStripMenuItem.Text = "SlideShow";
-            // 
-            // playToolStripMenuItem
-            // 
-            this.playToolStripMenuItem.Image = global::MLSlideShow.Properties.Resources.arrow_right_3;
-            this.playToolStripMenuItem.Name = "playToolStripMenuItem";
-            this.playToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.playToolStripMenuItem.Text = "Play";
-            this.playToolStripMenuItem.Click += new System.EventHandler(this.playToolStripMenuItem_Click);
             // 
             // sfdMain
             // 
@@ -155,6 +150,23 @@
             // 
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.mainToolstrip);
             // 
+            // mainStatus
+            // 
+            this.mainStatus.Dock = System.Windows.Forms.DockStyle.None;
+            this.mainStatus.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblStatus});
+            this.mainStatus.Location = new System.Drawing.Point(0, 0);
+            this.mainStatus.Name = "mainStatus";
+            this.mainStatus.Size = new System.Drawing.Size(1448, 22);
+            this.mainStatus.TabIndex = 3;
+            this.mainStatus.Text = "statusStrip1";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(55, 17);
+            this.lblStatus.Text = "[STATUS]";
+            // 
             // splitContainer1
             // 
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -185,6 +197,28 @@
             this.lstImages.TabIndex = 1;
             this.lstImages.UseCompatibleStateImageBehavior = false;
             // 
+            // imageContextMenu
+            // 
+            this.imageContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.startSlideShowHereToolStripMenuItem,
+            this.removeImageToolStripMenuItem});
+            this.imageContextMenu.Name = "imageContextMenu";
+            this.imageContextMenu.Size = new System.Drawing.Size(193, 48);
+            // 
+            // startSlideShowHereToolStripMenuItem
+            // 
+            this.startSlideShowHereToolStripMenuItem.Name = "startSlideShowHereToolStripMenuItem";
+            this.startSlideShowHereToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.startSlideShowHereToolStripMenuItem.Text = "Start SlideShow Here...";
+            this.startSlideShowHereToolStripMenuItem.Click += new System.EventHandler(this.startSlideShowHereToolStripMenuItem_Click);
+            // 
+            // removeImageToolStripMenuItem
+            // 
+            this.removeImageToolStripMenuItem.Name = "removeImageToolStripMenuItem";
+            this.removeImageToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.removeImageToolStripMenuItem.Text = "Remove Image";
+            this.removeImageToolStripMenuItem.Click += new System.EventHandler(this.removeImageToolStripMenuItem_Click);
+            // 
             // mainToolstrip
             // 
             this.mainToolstrip.Dock = System.Windows.Forms.DockStyle.None;
@@ -198,11 +232,12 @@
             this.tsbAddImage,
             this.toolStripSeparator3,
             this.tsbPlay,
+            this.tsbSlideShowSettings,
             this.toolStripSeparator4,
             this.tsbExit});
             this.mainToolstrip.Location = new System.Drawing.Point(3, 0);
             this.mainToolstrip.Name = "mainToolstrip";
-            this.mainToolstrip.Size = new System.Drawing.Size(214, 25);
+            this.mainToolstrip.Size = new System.Drawing.Size(237, 25);
             this.mainToolstrip.TabIndex = 0;
             // 
             // toolStripSeparator2
@@ -215,22 +250,14 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
-            // mainStatus
+            // toolStripSeparator4
             // 
-            this.mainStatus.Dock = System.Windows.Forms.DockStyle.None;
-            this.mainStatus.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblStatus});
-            this.mainStatus.Location = new System.Drawing.Point(0, 0);
-            this.mainStatus.Name = "mainStatus";
-            this.mainStatus.Size = new System.Drawing.Size(1448, 22);
-            this.mainStatus.TabIndex = 3;
-            this.mainStatus.Text = "statusStrip1";
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
             // 
-            // lblStatus
+            // ofdAddImage
             // 
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(55, 17);
-            this.lblStatus.Text = "[STATUS]";
+            this.ofdAddImage.Filter = "Image files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
             // 
             // picturePreview
             // 
@@ -312,6 +339,26 @@
             this.tsbPlay.Text = "Play";
             this.tsbPlay.Click += new System.EventHandler(this.tsbPlay_Click);
             // 
+            // tsbSlideShowSettings
+            // 
+            this.tsbSlideShowSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbSlideShowSettings.Image = global::MLSlideShow.Properties.Resources.system_settings;
+            this.tsbSlideShowSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSlideShowSettings.Name = "tsbSlideShowSettings";
+            this.tsbSlideShowSettings.Size = new System.Drawing.Size(23, 22);
+            this.tsbSlideShowSettings.Text = "toolStripButton1";
+            this.tsbSlideShowSettings.Click += new System.EventHandler(this.tsbSlideShowSettings_Click);
+            // 
+            // tsbExit
+            // 
+            this.tsbExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbExit.Image = global::MLSlideShow.Properties.Resources.application_exit_4;
+            this.tsbExit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbExit.Name = "tsbExit";
+            this.tsbExit.Size = new System.Drawing.Size(23, 22);
+            this.tsbExit.Text = "Exit";
+            this.tsbExit.Click += new System.EventHandler(this.tsbExit_Click);
+            // 
             // newProjectToolStripMenuItem
             // 
             this.newProjectToolStripMenuItem.Image = global::MLSlideShow.Properties.Resources.document_new_4;
@@ -352,46 +399,21 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // toolStripSeparator4
+            // playToolStripMenuItem
             // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            this.playToolStripMenuItem.Image = global::MLSlideShow.Properties.Resources.arrow_right_3;
+            this.playToolStripMenuItem.Name = "playToolStripMenuItem";
+            this.playToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.playToolStripMenuItem.Text = "Play";
+            this.playToolStripMenuItem.Click += new System.EventHandler(this.playToolStripMenuItem_Click);
             // 
-            // tsbExit
+            // settingsToolStripMenuItem
             // 
-            this.tsbExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbExit.Image = global::MLSlideShow.Properties.Resources.application_exit_4;
-            this.tsbExit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbExit.Name = "tsbExit";
-            this.tsbExit.Size = new System.Drawing.Size(23, 22);
-            this.tsbExit.Text = "Exit";
-            this.tsbExit.Click += new System.EventHandler(this.tsbExit_Click);
-            // 
-            // ofdAddImage
-            // 
-            this.ofdAddImage.Filter = "Image files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
-            // 
-            // imageContextMenu
-            // 
-            this.imageContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.startSlideShowHereToolStripMenuItem,
-            this.removeImageToolStripMenuItem});
-            this.imageContextMenu.Name = "imageContextMenu";
-            this.imageContextMenu.Size = new System.Drawing.Size(193, 48);
-            // 
-            // removeImageToolStripMenuItem
-            // 
-            this.removeImageToolStripMenuItem.Name = "removeImageToolStripMenuItem";
-            this.removeImageToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.removeImageToolStripMenuItem.Text = "Remove Image";
-            this.removeImageToolStripMenuItem.Click += new System.EventHandler(this.removeImageToolStripMenuItem_Click);
-            // 
-            // startSlideShowHereToolStripMenuItem
-            // 
-            this.startSlideShowHereToolStripMenuItem.Name = "startSlideShowHereToolStripMenuItem";
-            this.startSlideShowHereToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.startSlideShowHereToolStripMenuItem.Text = "Start SlideShow Here...";
-            this.startSlideShowHereToolStripMenuItem.Click += new System.EventHandler(this.startSlideShowHereToolStripMenuItem_Click);
+            this.settingsToolStripMenuItem.Image = global::MLSlideShow.Properties.Resources.system_settings;
+            this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.settingsToolStripMenuItem.Text = "Settings";
+            this.settingsToolStripMenuItem.Click += new System.EventHandler(this.settingsToolStripMenuItem_Click);
             // 
             // ProjectEditor
             // 
@@ -415,16 +437,16 @@
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
             this.toolStripContainer1.PerformLayout();
+            this.mainStatus.ResumeLayout(false);
+            this.mainStatus.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.imageContextMenu.ResumeLayout(false);
             this.mainToolstrip.ResumeLayout(false);
             this.mainToolstrip.PerformLayout();
-            this.mainStatus.ResumeLayout(false);
-            this.mainStatus.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picturePreview)).EndInit();
-            this.imageContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -467,6 +489,8 @@
         private System.Windows.Forms.ContextMenuStrip imageContextMenu;
         private System.Windows.Forms.ToolStripMenuItem removeImageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem startSlideShowHereToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton tsbSlideShowSettings;
     }
 }
 
