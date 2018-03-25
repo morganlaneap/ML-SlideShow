@@ -111,6 +111,7 @@ namespace MLSlideShow
             isSavePending = false;
             currentProjectFilePath = "";
             lstImages.LargeImageList = null;
+            currentProject.SlideShowDelay = 3000;
         }
 
         private void OpenProject()
